@@ -1,6 +1,8 @@
-import { test, expect } from '@playwright/test';
-import fs from 'fs';
-import pdfParse from 'pdf-parse';
+
+
+// import {pdfParse} from 'pdf-parse';
+
+
 
 // test('Read specific text from PDF', async ({ page }) => {
 //   await page.goto('https://kmsaddam.com/resume/Updated_SQA_Saddam_2026.pdf');
@@ -22,10 +24,12 @@ import pdfParse from 'pdf-parse';
 
 // });
 
+import { test, expect } from '@playwright/test';
+import pdfParse from 'pdf-parse';
 
-test('Read PDF from URL', async ({ request }) => {
-  const response = await request.get('https://kmsaddam.com/resume/Updated_SQA_Saddam_2026.pdf');
-  const buffer = await response.body();
+test('Read PDF', async ({ request }) => {
+  const res = await request.get('https://kmsaddam.com/resume/Updated_SQA_Saddam_2026.pdf');
+  const buffer = await res.body();
 
   const pdfData = await pdfParse(buffer);
 
